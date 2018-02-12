@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
  * The test class MemberTest.
  *
  * @author  (Siobhan Drohan)
- * @version (12 Feb 2018)
+ * @version (02 Feb 2017)
  */
 class MemberTest {
 	
@@ -111,8 +111,6 @@ class MemberTest {
 
         assertThat(normalMember1.getHeight(), is(1.0));
         assertThat(normalMember1.getStartingWeight(), is(35.0));
-
-        assertThat(normalMember1.getMemberGender(), equalTo ("F"));
     }
 
     @Test
@@ -127,8 +125,6 @@ class MemberTest {
 
         assertThat(normalMember2.getHeight(), is(3.0));
         assertThat(normalMember2.getStartingWeight(), is(250.0));
-        
-        assertThat(normalMember2.getMemberGender(), equalTo ("M"));
     }
 
     @Test
@@ -143,8 +139,6 @@ class MemberTest {
 
         assertThat(invalidMemberDetailsLower.getHeight(), is(0.0));
         assertThat(invalidMemberDetailsLower.getStartingWeight(), is(0.0));
-        
-        assertThat(invalidMemberDetailsLower.getMemberGender(), equalTo("Unspecified"));
     }
 
     @Test
@@ -214,10 +208,6 @@ class MemberTest {
         assertThat(normalMember2.getStartingWeight(), is(250.0));
         normalMember2.setStartingWeight(35);
         assertThat(normalMember2.getStartingWeight(), is(35.0));
-
-        assertThat(normalMember2.getMemberGender(), equalTo("M"));
-        normalMember2.setGender("f");
-        assertThat(normalMember2.getMemberGender(), equalTo("F"));
     }
 
     @Test
@@ -256,12 +246,6 @@ class MemberTest {
         assertThat(invalidMemberDetailsLower.getStartingWeight(), is(35.0));
         invalidMemberDetailsLower.setStartingWeight(34.8); 
         assertThat(invalidMemberDetailsLower.getStartingWeight(), is(35.0));
-
-        assertThat(invalidMemberDetailsLower.getMemberGender(), equalTo("Unspecified"));
-        invalidMemberDetailsLower.setGender("m");
-        assertThat(invalidMemberDetailsLower.getMemberGender(), equalTo("M"));
-        invalidMemberDetailsLower.setGender("blah");
-        assertThat(invalidMemberDetailsLower.getMemberGender(), equalTo("M"));
     }
 
     @Test
@@ -272,12 +256,8 @@ class MemberTest {
         assertThat(invalidMemberDetailsUpper.getMemberId(), is(100000));
         invalidMemberDetailsUpper.setMemberId(100001);
         assertThat(invalidMemberDetailsUpper.getMemberId(), is(100001));
-        invalidMemberDetailsUpper.setMemberId(10000000);
+        invalidMemberDetailsUpper.setMemberId(99999);
         assertThat(invalidMemberDetailsUpper.getMemberId(), is(100001));
-        invalidMemberDetailsUpper.setMemberId(999999);
-        assertThat(invalidMemberDetailsUpper.getMemberId(), is(999999));
-        invalidMemberDetailsUpper.setMemberId(999998);
-        assertThat(invalidMemberDetailsUpper.getMemberId(), is(999998));
 
         assertThat(invalidMemberDetailsUpper.getMemberName(), equalTo("012345678901234567890123456789"));
         assertThat(invalidMemberDetailsUpper.getMemberName().length(), is(30));
@@ -304,15 +284,6 @@ class MemberTest {
         assertThat(invalidMemberDetailsUpper.getStartingWeight(), is(250.0));
         invalidMemberDetailsUpper.setStartingWeight(250.2); 
         assertThat(invalidMemberDetailsUpper.getStartingWeight(), is(250.0));
-
-        //test the mutator for both positive and negative tests
-        assertThat(invalidMemberDetailsUpper.getMemberGender(), equalTo("Unspecified"));
-        invalidMemberDetailsUpper.setGender("f");
-        assertThat(invalidMemberDetailsUpper.getMemberGender(), equalTo("F"));
-        invalidMemberDetailsUpper.setGender("b");
-        assertThat(invalidMemberDetailsUpper.getMemberGender(), equalTo("F"));
-    
-    
     }    
 
     //==============================================================================
