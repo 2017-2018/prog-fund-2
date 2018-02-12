@@ -142,6 +142,10 @@ body
       04
     </a>
     
+    <a class="item" data-tab="05">
+      05
+    </a>
+    
     <div class="item">
       
     </div>
@@ -218,10 +222,8 @@ body
 <p>In this practical, you will create a new project called ShopV5.0 in Eclipse, based on ShopV4.0.  You will update the Driver, Store and Product classes (linked below) to enable the user to save the products to an XML file and also reload them (see Figure 1 for the updated menu system).</p>
 <p><img src="./img/00.png" alt="Figure 1: Menu System for ShopV5.0"> </p>
 <h2>Menu Items 9 and 10:  Saving and Loading Products</h2>
-<ul>
-<li><p>Create a new project called ShopV5.0.</p>
-</li>
-<li><p>Copy the following classes into the project:</p>
+<p>Create a new project called ShopV5.0.</p>
+<p>Copy the following classes into the project:</p>
 <ul>
 <li><p><a href="archives/Driver.java">Driver.java</a></p>
 </li>
@@ -230,14 +232,12 @@ body
 <li><p><a href="archives/Product.java">Product.java</a></p>
 </li>
 </ul>
-</li>
-</ul>
 <h2>Setting up the Component for Serializing</h2>
 <p>Download the following XStream jar file:</p>
 <ul>
 <li><a href="archives/xstream-1.4.8.jar">xstream-1.4.8.jar</a> </li>
 </ul>
-<p>In Eclipse Package Explorer, create a new folder &quot;lib&quot;. Do this be selecting the project, select &quot;File-&gt;New-&gt;Folder&quot;. In the offered dialog, enter &quot;lib&quot; as the file name. Drag the xstream.jar file already downloaded into the lib folder (choose the option to copy the file).  Your workspace should look like this:</p>
+<p>In Eclipse Package Explorer, create a new <strong>folder</strong> &quot;lib&quot;. Do this be selecting the project, select &quot;File-&gt;New-&gt;Folder&quot;. In the offered dialog, enter &quot;lib&quot; as the file name. Drag the xstream jar file already downloaded into the lib folder (choose the option to copy the file).  Your workspace should look like this:</p>
 <p><img src="img/xml01.png" alt=""></p>
 <p>Right click on the xstream-1.4.8.jar file and select &quot;Build Path-&gt;Add to Build Path&quot;. Workspace should now look like this:</p>
 <p><img src="img/xml02.png" alt=""></p>
@@ -268,13 +268,9 @@ import java.io.ObjectOutputStream;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;</code></pre>
 <h2>Adding load and save functionality to the menu</h2>
-<ul>
-<li>In the Driver class, add options 9 and 10 to the printed menu:</li>
-</ul>
+<p>In the Driver class, add options 9 and 10 to the printed menu:</p>
 <p><img src="./img/03.png" alt="Figure 4: Menu System code for Shop V5.0"> </p>
-<ul>
-<li>In the Driver class, make the following changes to implement case 9 and 10: </li>
-</ul>
+<p>In the Driver class, make the following changes to implement case 9 and 10: </p>
 <p><img src="./img/04.png" alt="Figure 5: Code for case 9 and 10"> </p>
 <h2>Testing the load and store</h2>
 <p>You should be in a position now to test.</p>
@@ -288,8 +284,7 @@ Please enter the product description: 14 inch monitor
 Please enter the product code: 2322
 Please enter the product cost: 109.99
 Is this product in your current line (y/n): y</code></pre>
-<p>Now try option 9 to save your products.  </p>
-<p>Refresh the package view in eclipse (F5) and you should now see a products.xml file.  </p>
+<p>Now try option 9 to save your products. <strong>Note: if you are using java 9 you are probably getting a series of red warning messages...the products will be saved, but they will still produce the warnings.  The next step will show you how to suppress these warnings</strong>.<br>Refresh the package view in eclipse (F5) and you should now see a products.xml file.  </p>
 <p>Open this file and it should contain something similar to this:</p>
 <pre><code class="lang-xml">&lt;object-stream&gt;
   &lt;list&gt;
@@ -307,31 +302,50 @@ Is this product in your current line (y/n): y</code></pre>
     &lt;/Product&gt;
   &lt;/list&gt;
 &lt;/object-stream&gt;</code></pre>
-<ul>
-<li><p>Exit your application and run it again.</p>
-</li>
-<li><p>Test option 10 and make sure that your products are loaded back into your products ArrayList correctly.</p>
-</li>
-</ul>
+<p>Exit your application and run it again.</p>
+<p>Test option 10 and make sure that your products are loaded back into your products ArrayList correctly.</p>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="02">
-        <h1>Shop V5.0 - Exceptions</h1>
-<p>In this practical, you will continue working on Shop V5.0. </p>
-<h2>Adding Exception Handling</h2>
+        <h1>Java 9 and XStream</h1>
+<p>If you are using JDK9, you are more than likely getting the following error when saving your products:</p>
+<p><img src="./img/error01.png" alt="Error when saving XML file with JDK9">  </p>
+<p>However, your products.xml file will still be successfully saved; it is just a warning. </p>
+<h2>Getting rid of the warning</h2>
+<p>We can get rid of the warning by passing suppression messages to the VM when we run our application. To do this:</p>
 <ul>
-<li><p>In the Driver class, put a try and catch block around each potential read of data that could throw an exception (nextLine and next are ok).</p>
-</li>
-<li><p>Revisit your lecture notes on this topic if you need guidance.</p>
-</li>
-<li><p>Run your program and test your user input to ensure that your exception handling is correctly implemented.</p>
-</li>
+<li>Right click on your the project, ShopV5.0.  From the context menu, select <strong>Run As</strong> followed by <strong>Run Configurations</strong>.  The following window should appear:</li>
+</ul>
+<p><img src="./img/error02.png" alt="Run configurations">  </p>
+<ul>
+<li>Click on the <strong>Arguments</strong> tab and enter the following VM arguments:</li>
+</ul>
+<pre><code>--add-opens java.base/java.util=ALL-UNNAMED 
+--add-opens java.base/java.lang.reflect=ALL-UNNAMED 
+--add-opens java.base/java.text=ALL-UNNAMED 
+--add-opens java.desktop/java.awt.font=ALL-UNNAMED</code></pre>
+<ul>
+<li>Your configuration window should now look like this:</li>
+</ul>
+<p><img src="./img/error03.png" alt="Run configurations">  </p>
+<ul>
+<li>Click the <strong>Run</strong> button.  Try the save again...the warning message should now be suppresed.</li>
 </ul>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="03">
+        <h1>Shop V5.0 - Exceptions</h1>
+<p>In this practical, you will continue working on Shop V5.0. </p>
+<h2>Adding Exception Handling</h2>
+<p>In the Driver class, put a try and catch block around each potential read of data that could throw an exception (nextLine and next are ok).</p>
+<p>Revisit your lecture notes on this topic if you need guidance.</p>
+<p>Run your program and test your user input to ensure that your exception handling is correctly implemented.</p>
+
+      </div>
+     
+      <div  class="ui tab segment lab" data-tab="04">
         <h1>Menu Driven DVD Specification (Phase 3)</h1>
 <p>In this practical, you will create a new project in Eclipse and copy in the code from <strong>DVDLibraryV2.0</strong>.  You will then extend the code to allow the user to save the DVDs to an XML file and to load the DVDs from an XML file. </p>
 <ul>
@@ -405,7 +419,7 @@ Is this product in your current line (y/n): y</code></pre>
 
       </div>
      
-      <div  class="ui tab segment lab" data-tab="04">
+      <div  class="ui tab segment lab" data-tab="05">
         <h1>Solutions</h1>
 <p>The solution to the ShopV5.0 exercise <a href="archives/ShopV5.0.zip">is here</a>.</p>
 <p>The solution to DVD phase 3 <a href="archives/DVDLibraryV3.0.zip">is here</a>.</p>
