@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.hamcrest.CoreMatchers.*;
 
 /**
  * The test class MemberTest.
@@ -9,8 +10,8 @@ import static org.junit.Assert.*;
  * @author  (Siobhan Drohan)
  * @version (02 Feb 2017)
  */
-class MemberTest {
-	
+public class MemberTest
+{
     //instance fields for testing throughout the test class
     private Member normalMember1;
     private Member normalMember2;
@@ -53,7 +54,7 @@ class MemberTest {
      *
      * Called before every test case method.
      */
-    @BeforeEach
+    @Before
     public void setUp()
     {
         normalMember1 = new Member(100001, "012345678901234567890123456789", "Waterford", 1, 35, "f");
@@ -372,4 +373,13 @@ class MemberTest {
         assertThat(equal40.determineBMICategory().contains("VERY SEVERELY OBESE"), is(true));  
     }
 
+    /**
+     * Tears down the test fixture.
+     *
+     * Called after every test case method.
+     */
+    @After
+    public void tearDown()
+    {
+    }
 }
