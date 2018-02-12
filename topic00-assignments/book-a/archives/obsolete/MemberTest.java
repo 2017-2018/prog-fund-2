@@ -1,6 +1,8 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.hamcrest.CoreMatchers.*;
 
 /**
  * The test class MemberTest.
@@ -8,8 +10,8 @@ import org.junit.jupiter.api.Test;
  * @author  (Siobhan Drohan)
  * @version (02 Feb 2017)
  */
-class MemberTest {
-	
+public class MemberTest
+{
     //instance fields for testing throughout the test class
     private Member normalMember1;
     private Member normalMember2;
