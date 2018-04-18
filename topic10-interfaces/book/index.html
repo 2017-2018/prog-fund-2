@@ -117,13 +117,13 @@ body
   <header class="header item">
     <i id="toc" class="sitemap icon"></i>
     <a href="../index.html">
-      Supplementary Materials 
+      11 & 12. Interfaces 
     </a>
   </header>
   <div class="right tab-menu menu">
     
-    <a class="item" data-tab="ShopV6.0">
-      ShopV6.0
+    <a class="item" data-tab="Lab-10">
+      Lab-10
     </a>
     
     <a class="item" data-tab="01">
@@ -215,13 +215,13 @@ body
       
     
       
-        <a class="item" href="../../topic10-interfaces/book/index.html">
+        <a class="active item" href="../../topic10-interfaces/book/index.html">
           Lab-10
         </a>
       
     
       
-        <a class="active item" href="../../topic11-additional-material/book-1-shopv6/index.html">
+        <a class="item" href="../../topic11-additional-material/book-1-shopv6/index.html">
           ShopV6.0
         </a>
       
@@ -231,117 +231,130 @@ body
     <div class="ui basic segment" id="labchat">
       <br>
       
-      <div  class="ui tab segment lab" data-tab="ShopV6.0">
+      <div  class="ui tab segment lab" data-tab="Lab-10">
         <h1>Objectives</h1>
-<p>Packages, Utilities and Parsing: use a package structure for the Shop app and also to write re-usable utilities.  We will also experiment with Wrapper classes and parsing.</p>
+<p>On completion of this lab you should be able to:</p>
+<ul>
+<li><p>use Interfaces when defining collections.</p>
+</li>
+<li><p>write your own bespoke Interface and implement it.</p>
+</li>
+</ul>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="01">
-        <h1>ShopV6.0 (using packages)</h1>
+        <h1>Using Pre-defined Interfaces</h1>
+<p>In this practical, you will use the Collections Framework Interfaces in the Network app.</p>
+<h2>Creating Network-V6</h2>
 <ul>
-<li>In this step, you will download ShopV5.0 and use it to create a models-controllers-utils package structure for ShopV6.0. </li>
-</ul>
-<h2>Downloading ShopV5.0 Project</h2>
-<ul>
-<li>Download <a href="archives/ShopV5.0.zip">ShopV5.0</a>.  The structure of this project is like so:</li>
-</ul>
-<p><img src="./img/00.png" alt="ShopV5.0 project structure"> </p>
-<h2>Creating ShopV6.0 Project</h2>
-<ul>
-<li><p>In Eclipse, create a new project called ShopV6.0.</p>
+<li><p>Create a new project called Network-V6 in Eclipse.</p>
 </li>
-<li><p>Right-click on the <strong>src</strong> folder and select <strong>New</strong>, followed by <strong>Package</strong>.  Enter “models” as the package name:</p>
-</li>
-</ul>
-<p><img src="./img/01.png" alt="Creating models package"> </p>
+<li><p>Copy the following classes into the project:</p>
 <ul>
-<li><p>Create two more packages: “controllers” and “utils”.</p>
+<li><p><a href="archives/Driver.java">Driver.java</a></p>
 </li>
-<li><p>Copy the ShopV5.0 files into the ShopV6.0 project to the locations specified in the screen shot below.</p>
+<li><p><a href="archives/MessagePost.java">MessagePost.java</a></p>
+</li>
+<li><p><a href="archives/NewsFeed.java">NewsFeed.java</a></p>
+</li>
+<li><p><a href="archives/PhotoPost.java">PhotoPost.java</a></p>
+</li>
+<li><p><a href="archives/Post.java">Post.java</a></p>
 </li>
 </ul>
-<p><img src="./img/02.png" alt="ShopV6.0 project structure"> </p>
-<ul>
-<li><p>When we have copied all the existing code to this new format, you can see above that we have errors!  The problem is that the Product class cannot be found in the MenuController and the Store classes (because they are stored in a different package).</p>
-</li>
-<li><p>In both MenuController and Store, import models.product;</p>
-</li>
-<li><p>The errors should now be gone</p>
 </li>
 </ul>
-<p><img src="./img/03.png" alt="ShopV6.0 project structure"> </p>
-<h2>Testing the app</h2>
+<h2>Using the List Interface</h2>
 <ul>
-<li>Run the app to make sure that all works ok.</li>
+<li><p>In this section, you may need to refer to your lecture slides for support (i.e. the fourth slide deck).</p>
+</li>
+<li><p>In Post.java:</p>
+<ul>
+<li><p>define the <strong>comments</strong> ArrayList to be a List.</p>
+</li>
+<li><p>create a getter and setter for the <strong>comments</strong> field.</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>In NewsFeed.java:</p>
+<ul>
+<li>define the <strong>posts</strong> ArrayList to be a List.</li>
+</ul>
+</li>
+<li><p>Test your code to make sure your refactoring did not break anything.</p>
+</li>
 </ul>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="02">
-        <h1>ShopV6.0 (using utilities)</h1>
+        <h1>Implementing INewsFeed</h1>
+<p>In this practical, you will create the INewsFeed interface and implement it in NewsFeed. In this section, you may need to refer to your lecture slides for support (i.e. the fourth slide deck).</p>
+<h2>Creating the New Project</h2>
 <ul>
-<li>In this step, you will continue working on ShopV6.0 and add a utilities class for re-usable validation methods. </li>
+<li>In Eclipse, right click on your Network-V6 project and paste it as Network-V7.  Note: the solution to V6 is in the next step if you need it.</li>
 </ul>
-<h2>ShopV6.0 - ScannerInput class</h2>
+<h2>Creating INewsFeed.java</h2>
 <ul>
-<li><p>In Eclipse, open ShopV6.0 (if it isn&#39;t open already).</p>
+<li><p>Within the <strong>src</strong> folder, create a new Interface called <strong>INewsFeed.java</strong>.</p>
 </li>
-<li><p>In the utils package, create a new  class called ScannerInput.</p>
-</li>
-<li><p>Cut the validNextDouble and validNextInt methods from MenuController and paste them into ScannerInput.</p>
-</li>
-<li><p>Change the accessor modifier for these methods from private to public.  Make each method static.</p>
-</li>
-<li><p>Add a local Scanner object for each method and import the Scanner class.</p>
-</li>
-<li><p>Your ScannerInput class should look something like this:</p>
+<li><p>Add the following methods into the Interface:</p>
 </li>
 </ul>
-<p><img src="./img/04.png" alt="ScannerInput class"> </p>
-<h2>MenuController changes</h2>
+<pre><code>    void addPost(Post post);
+    void deletePost(int index);
+    String show();</code></pre>
+<h2>Updating NewsFeed.java</h2>
 <ul>
-<li><p>Now that we have the ScannerInput class created, our MenuController class no longer compiles; it doesn&#39;t recognise our <strong>validNextInt</strong> and <strong>validNextDouble</strong> methods anymore.</p>
+<li><p>Implement the INewsFeed interface in the NewsFeed class.</p>
 </li>
-<li><p>To fix this, add this line of code to the import section of MenuController:</p>
+<li><p>You will notice that implementations have already been provided for two of the abstract methods:</p>
+<ul>
+<li>void addPost(Post post);</li>
+<li>String show();</li>
+</ul>
+</li>
+<li><p>You need to provide an implementation for this method:</p>
+<ul>
+<li>void deletePost(int index);</li>
+</ul>
+</li>
+<li><p>The implementation should remove the object stored in the <strong>posts</strong> collection at the specified index.</p>
+</li>
+<li><p>In the implementation of the <strong>show</strong> method, add the index number of the post to the output string.</p>
 </li>
 </ul>
-<pre><code class="lang-java">import static utils.ScannerInput.*;</code></pre>
-<h2>Testing the app</h2>
+<h2>Updating Driver.java</h2>
 <ul>
-<li><p>Run the app to make sure that all works ok.</p>
+<li><p>Add an option 4 to the menu.</p>
 </li>
-<li><p>When testing the app, you might notice that our dummy reads for emptying the buffer are now causing a problem!</p>
+<li><p>When this option is selected, a new method called <strong>deletePost()</strong> should be called.  This method should:</p>
+<ul>
+<li><p>display all the stored posts</p>
 </li>
-<li><p>We can get rid of these now and, as we are creating a new Scanner object for each int and double read, we don’t have to worry about emptying our buffers anymore!</p>
+<li><p>ask the user to enter the index number of the post they wish to delete</p>
+</li>
+<li><p>delete the post at the specified index</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Note: don&#39;t worry about robustness in this lab e.g. exception handling on the input, verifying that the index is valid, etc.  The purpose of this lab is just to introduce you to Interfaces in the simplest form possible.</p>
+</li>
+<li><p>Test the delete aspect of your code; is all working as expected?</p>
 </li>
 </ul>
 
       </div>
      
       <div  class="ui tab segment lab" data-tab="03">
-        <h1>ShopV6.0 (wrappers and parsing)</h1>
-<ul>
-<li>In this step, you will continue working on ShopV6.0 and use wrappers and parsing in your new ScannerInput class. </li>
-</ul>
-<h2>ShopV6.0 - updating ScannerInput class</h2>
-<ul>
-<li><p>In Eclipse, open ShopV6.0 (if it isn&#39;t open already).</p>
-</li>
-<li><p>In the utils package, open the class called ScannerInput.</p>
-</li>
-<li><p>Rewrite the validNextInt and validNextDouble methods to use Wrapper classes and parsers, as shown in the screen shot below:</p>
-</li>
-</ul>
-<p><img src="./img/05.png" alt="Updated ScannerInput class"> </p>
-<h2>Testing the app</h2>
-<ul>
-<li>Run the app to make sure that all works ok.</li>
-</ul>
-<h2>Solution</h2>
-<ul>
-<li>The solution for ShopV6.0 is <a href="archives/ShopV6.0.zip">available here</a>.</li>
-</ul>
+        <h1>Solutions</h1>
+<p>The solution for Network-V6 can be found <a href="archives/Network-V6.zip">here </a>.</p>
+<p>The solution for Network-V7 can be found <a href="archives/Network-V7.zip">here </a>.</p>
 
       </div>
      
